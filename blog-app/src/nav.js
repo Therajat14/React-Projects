@@ -15,9 +15,6 @@ const Navbar = () => {
                     <NavLink to="/contact" className={({ isActive }) => isActive ? "active" : ""}>Contact</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/service" className={({ isActive }) => isActive ? "active" : ""}>Service</NavLink>
-                </li>
-                <li>
                     <NavLink to="/blog" className={({ isActive }) => isActive ? "active" : ""}>Blog</NavLink>
                 </li>
             </ul>
