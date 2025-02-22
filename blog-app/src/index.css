@@ -206,7 +206,7 @@ nav {
     padding: 1rem;
     display: flex;
     justify-content: left;
-    border: #0066cc solid 1px;
+    border-bottom: #4687c7c4 solid 1px;
 }
 
 nav ul {
