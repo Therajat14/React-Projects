@@ -25,9 +25,7 @@
     transition: transform 0.2s ease-in-out;
 }
 
-.post-item:hover {
-    transform: scale(1.02);
-}
+
 
 /* Post content */
 .post-content {

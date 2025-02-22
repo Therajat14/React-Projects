@@ -4,7 +4,7 @@ import React from 'react';
 function Blog({ post }) {
     return (
         <div className="home-container">
-            <h4>Blog Feed</h4>
+
             {post.length > 0 ? (
                 <ul className="post-list">
                     {post.map((post) => (

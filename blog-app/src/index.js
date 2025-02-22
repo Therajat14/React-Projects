@@ -11,6 +11,7 @@ import Blog from './blog';
 import Paramas from './params';
 import NotFound from './notfound';
 import { useState, useEffect } from "react";
+import Post from './postPage';
 
 
 
@@ -51,16 +52,17 @@ const Index = () => {
     <>
       <BrowserRouter>
         <Header />
-
-        <Routes>
-          <Route path='/' element={<Home post={post} />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/Service' element={<Home />} />
-          <Route path='/Blog' element={<Blog post={post} />} />
-          <Route path='/para/:id' element={<Paramas />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes >
+        <main>
+          <Routes>
+            <Route path='/' element={<Home post={post} />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/Service' element={<Home />} />
+            <Route path='/Blog' element={<Blog post={post} />} />
+            <Route path='/post/:id' element={<Post post={post} />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes >
+        </main>
         <Footer />
       </BrowserRouter >
     </>
