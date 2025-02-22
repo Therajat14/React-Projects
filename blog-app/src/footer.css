@@ -1,0 +1,38 @@
+/* Footer Styling */
+.footer {
+    background-color: #222;
+    /* Dark background */
+    color: #fff;
+    /* White text */
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 0.9rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Links inside footer */
+.footer a {
+    color: #00bcd4;
+    /* Light blue color */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    color: #ffcc00;
+    /* Highlight on hover */
+}
+
+/* Development Notice */
+.footer-note {
+    font-size: 0.8rem;
+    color: #ffcc00;
+    /* Yellow for attention */
+    margin-top: 5px;
+    font-weight: bold;
+}
