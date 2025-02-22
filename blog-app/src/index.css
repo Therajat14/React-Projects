@@ -15,7 +15,7 @@ header {
     /* Dark gray background */
     color: white;
     padding: 1rem;
-    text-align: center;
+    text-align: left;
 }
 
 /* Home section styles */
@@ -102,7 +102,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    text-align: center;
+    text-align: left;
 }
 
 footer h1 {
@@ -162,6 +162,7 @@ textarea {
     border-radius: 4px;
     background-color: white;
     color: #333;
+    margin-top: 1rem;
 }
 
 input:focus,
@@ -177,7 +178,7 @@ textarea:focus {
     /* Dark gray background */
     padding: 1rem;
     display: flex;
-    justify-content: center;
+    justify-content: left;
 }
 
 .nav-links {
@@ -204,7 +205,8 @@ nav {
     /* Dark gray background */
     padding: 1rem;
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    border: #0066cc solid 1px;
 }
 
 nav ul {
@@ -231,4 +233,5 @@ nav ul li a:hover {
 
 .active {
     color: #0066cc;
+
 }
