@@ -9,13 +9,13 @@ function Home({ post }) {
             {post.length > 0 ? (
                 <ul className="post-list">
                     {post.map((post) => (
-                        <Link to={`post/${post.id}`} >
+                        <Link to={`post/${post.id}`} className="homeFeed">
                             <li key={post.id} className="post-item">
                                 <div className="post-content">
                                     <h3 className="post-title">{post.title}</h3>
                                     <p className="post-datetime">{new Date(post.datetime).toLocaleString()}</p>
                                     <p className="post-body">
-                                        {post.body.length < 25 ? post.body : `${post.body.substring(0, 45)}...`}
+                                        {post.body.length < 25 ? post.body : `${post.body.substring(0, 100)}...`}
                                     </p>
 
                                 </div>

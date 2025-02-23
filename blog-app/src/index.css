@@ -145,6 +145,7 @@ button {
     padding: 0.5rem 1rem;
     cursor: pointer;
     border-radius: 4px;
+    margin-top: 1rem;
 }
 
 button:hover {
@@ -235,3 +236,24 @@ nav ul li a:hover {
     color: #0066cc;
 
 }
+
+.homeFeed {
+    text-decoration: none;
+    /* Remove underline */
+    color: inherit;
+    /* Keep default text color */
+
+
+}
+
+.homeFeed:hover {
+    text-decoration: none;
+    /* Ensure no underline on hover */
+    color: blue;
+
+    /* Change color on hover (optional) */
+}
+
+
+
+/* index.css */
