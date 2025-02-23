@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Post = ({ post, handelDelete }) => {
     const { id } = useParams();
@@ -14,9 +15,13 @@ const Post = ({ post, handelDelete }) => {
             <h1 className="post-title">{item.title}</h1>
             <p className="post-datetime">{new Date(item.datetime).toLocaleString()}</p>
             <p className="post-body">{item.body}  </p>
+            <Link to="/">
+                <button onClick={() => {
 
-            <button onClick={handelDelete}> Delete Post</button>
+                    handelDelete(id)
 
+                }}> Delete Post</button>
+            </Link>
         </div>
     );
 };

@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 function Home({ post }) {
     return (
-        <div className="home-container">
+        <div >
 
             {post.length > 0 ? (
                 <ul className="post-list">

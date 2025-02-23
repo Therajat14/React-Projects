@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import './index.css';
@@ -8,15 +8,14 @@ import Home from './home';
 import About from './about';
 import Contact from './contact';
 import Blog from './blog';
-import Paramas from './params';
+
 import NotFound from './notfound';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Post from './postPage';
 
 
 
 const Index = () => {
-
 
   const [post, setPost] = useState([
     {
@@ -43,12 +42,15 @@ const Index = () => {
       datetime: "2025-02-18T08:20:00Z",
       body: "A to-do app is a great beginner project for learning React. Start by setting up a new React project and creating a `TodoList` component. Use the `useState` hook to manage the list of. tasks. Each task should be represented as an object with properties like `id`, `text`, and `completed`. Render tasks dynamically using `map()`, and add features like marking tasks as done and deleting them. With React, you can easily create interactive and responsive UI components."
     }
-  ]);
+  ]); useEffect(() => {
+    console.log(post)
+  }, [post])
 
-  const handelDelete = (id) => {
-    const postlist = post.filter(item => item.id != id);
-    console.log("DEleteed")
-    setPost(postlist);
+  const handelDelete = async (id) => {
+    const postlist = post.filter((item) => item.id !== Number(id));
+    await setPost(postlist);
+
+
   }
 
 
