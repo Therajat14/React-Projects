@@ -41,11 +41,15 @@ const Index = () => {
       id: 4,
       title: "Building a To-Do App with React",
       datetime: "2025-02-18T08:20:00Z",
-      body: "A to-do app is a great beginner project for learning React. Start by setting up a new React project and creating a `TodoList` component. Use the `useState` hook to manage the list of tasks. Each task should be represented as an object with properties like `id`, `text`, and `completed`. Render tasks dynamically using `map()`, and add features like marking tasks as done and deleting them. With React, you can easily create interactive and responsive UI components."
+      body: "A to-do app is a great beginner project for learning React. Start by setting up a new React project and creating a `TodoList` component. Use the `useState` hook to manage the list of. tasks. Each task should be represented as an object with properties like `id`, `text`, and `completed`. Render tasks dynamically using `map()`, and add features like marking tasks as done and deleting them. With React, you can easily create interactive and responsive UI components."
     }
   ]);
 
-
+  const handelDelete = (id) => {
+    const postlist = post.filter(item => item.id != id);
+    console.log("DEleteed")
+    setPost(postlist);
+  }
 
 
   return (
@@ -59,7 +63,7 @@ const Index = () => {
             <Route path='/contact' element={<Contact />} />
             <Route path='/Service' element={<Home />} />
             <Route path='/Blog' element={<Blog post={post} />} />
-            <Route path='/post/:id' element={<Post post={post} />} />
+            <Route path='/post/:id' element={<Post post={post} handelDelete={handelDelete} />} />
             <Route path='*' element={<NotFound />} />
           </Routes >
         </main>

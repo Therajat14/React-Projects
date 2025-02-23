@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-const Post = ({ post }) => {
+const Post = ({ post, handelDelete }) => {
     const { id } = useParams();
     const item = post.find(item => item.id.toString() === id);
 
@@ -15,7 +15,7 @@ const Post = ({ post }) => {
             <p className="post-datetime">{new Date(item.datetime).toLocaleString()}</p>
             <p className="post-body">{item.body}  </p>
 
-            <button> Delete Post</button>
+            <button onClick={handelDelete}> Delete Post</button>
 
         </div>
     );
