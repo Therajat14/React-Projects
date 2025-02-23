@@ -36,3 +36,17 @@
     margin-top: 5px;
     font-weight: bold;
 }
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    /* Red background */
+    color: #fff;
+    /* White text */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 3px;
+}
