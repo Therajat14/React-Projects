@@ -46,11 +46,6 @@ const Index = () => {
       alert("Blog Post Added");
     }, 500);
     console.log("Addded");
-
-
-
-
-
   }
 
 
