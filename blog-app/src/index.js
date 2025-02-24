@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Fixed import
 import './index.css';
 import Header from './header';
 import Footer from './footer';
@@ -8,21 +8,16 @@ import Home from './home';
 import About from './about';
 import Blog from './blog';
 import NotFound from './notfound';
-import { useState } from "react";
 import Post from './postPage';
 import { postsDB } from './postData';
 import NewPost from './newpost';
 
-
-
-
 const Index = () => {
   const [post, setPost] = useState(postsDB);
   const [search, setSearch] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
+  const [searchResult, setSearchResult] = useState(postsDB); // Initialize with all posts
 
-
-
+  // Delete Post Function
   const handleDelete = (id) => {
     const postlist = post.filter((item) => item.id !== Number(id));
     setPost(postlist);
@@ -31,16 +26,14 @@ const Index = () => {
     }, 500);
   };
 
+  // Search Function
   const handleSearch = (e) => {
     setSearch(e.target.value);
-
-
-    console.log("results");
   };
 
+  // Add New Post Function
   const handleSubmit = (title, body) => {
     const id = post.length > 0 ? Math.max(...post.map((post) => post.id)) + 1 : 0;
-    console.log(id);
     const newBlog = {
       id,
       title,
@@ -51,17 +44,22 @@ const Index = () => {
     setTimeout(() => {
       alert("Blog Post Added");
     }, 500);
-    console.log("Added");
   };
+
+  // Search Filter Logic inside useEffect
   useEffect(() => {
-    const results = post.filter((item) =>
-      item.body.toLowerCase().includes(search.toLowerCase()) ||
-      item.title.toLowerCase().includes(search.toLowerCase())
+    if (search.trim() === "") {
+      setSearchResult(post); // Show all posts when search is empty
+    } else {
+      const results = post.filter((item) =>
+        item.body.toLowerCase().includes(search.toLowerCase()) ||
+        item.title.toLowerCase().includes(search.toLowerCase())
+      );
+      setSearchResult(results);
+    }
+  }, [post, search]); // Correct dependency array
 
-    );
-    setSearchResult(results);
-
-  })
+  // ✅ Moved JSX inside return statement
   return (
     <BrowserRouter>
       <Header search={search} handleSearch={handleSearch} />
@@ -71,7 +69,7 @@ const Index = () => {
           <Route path="/about" element={<About />} />
           <Route path="/newpost" element={<NewPost handleSubmit={handleSubmit} />} />
           <Route path="/Service" element={<Home />} />
-          <Route path="/Blog" element={<Blog post={post} />} />
+          <Route path="/Blog" element={<Blog post={searchResult} />} /> {/* Fixed */}
           <Route path="/post/:id" element={<Post post={post} handleDelete={handleDelete} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -81,12 +79,5 @@ const Index = () => {
   );
 };
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-
-  <Index />
-
-
-);
-
+root.render(<Index />);
