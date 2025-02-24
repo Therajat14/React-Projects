@@ -17,58 +17,70 @@ import NewPost from './newpost';
 
 
 const Index = () => {
+  const [post, setPost] = useState(postsDB);
+  const [search, setSearch] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
 
 
-  const [post, setPost] = useState(postsDB); useEffect(() => {
-    console.log(post)
-  }, [post])
 
-  const handelDelete = (id) => {
+  const handleDelete = (id) => {
     const postlist = post.filter((item) => item.id !== Number(id));
     setPost(postlist);
     setTimeout(() => {
       alert("Blog Post Deleted");
     }, 500);
-  }
+  };
 
-  const handelSubmit = (title, body) => {
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
 
-    const id = post.length > 0 ? Math.max(...post.map(post => post.id)) + 1 : 0;
-    console.log(id)
+
+    console.log("results");
+  };
+
+  const handleSubmit = (title, body) => {
+    const id = post.length > 0 ? Math.max(...post.map((post) => post.id)) + 1 : 0;
+    console.log(id);
     const newBlog = {
       id,
       title,
       datetime: new Date().toISOString(),
-      body
-    }
+      body,
+    };
     setPost([...post, newBlog]);
     setTimeout(() => {
       alert("Blog Post Added");
     }, 500);
-    console.log("Addded");
-  }
+    console.log("Added");
+  };
+  useEffect(() => {
+    const results = post.filter((item) =>
+      item.body.toLowerCase().includes(search.toLowerCase()) ||
+      item.title.toLowerCase().includes(search.toLowerCase())
 
+    );
+    setSearchResult(results);
 
+  })
   return (
-    <>
-      <BrowserRouter>
-        <Header />
-        <main>
-          <Routes>
-            <Route path='/' element={<Home post={post} />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/newpost' element={<NewPost handelSubmit={handelSubmit} />} />
-            <Route path='/Service' element={<Home />} />
-            <Route path='/Blog' element={<Blog post={post} />} />
-            <Route path='/post/:id' element={<Post post={post} handelDelete={handelDelete} />} />
-            <Route path='*' element={<NotFound />} />
-          </Routes >
-        </main>
-        <Footer />
-      </BrowserRouter >
-    </>
-  )
-}
+    <BrowserRouter>
+      <Header search={search} handleSearch={handleSearch} />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home post={searchResult} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/newpost" element={<NewPost handleSubmit={handleSubmit} />} />
+          <Route path="/Service" element={<Home />} />
+          <Route path="/Blog" element={<Blog post={post} />} />
+          <Route path="/post/:id" element={<Post post={post} handleDelete={handleDelete} />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </BrowserRouter>
+  );
+};
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,15 +1,15 @@
 import Navbar from "./nav"
 import Search from "./search"
 
-
-export default function Header() {
+function Header({ search, handleSearch }) {
 
     return (
         <header>
             <h1>  Blog App </h1>
             <Navbar />
-            <Search />
+            <Search search={search} handleSearch={handleSearch} />
 
         </header>
     )
 }
+export default Header;

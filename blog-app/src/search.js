@@ -1,13 +1,4 @@
-import React, { useState } from 'react';
-
-const Search = () => {
-    const [search, setSearch] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
-
-    const handleChange = (e) => {
-        setSearch(e.target.value);
-    };
-
+const Search = ({ search, handleSearch }) => {
     return (
         <form>
             <label htmlFor="SearchBox">
@@ -15,7 +6,7 @@ const Search = () => {
                     type="text"
                     placeholder="Search"
                     value={search}
-                    onChange={handleChange}
+                    onChange={handleSearch} // Fixed function name
                 />
             </label>
         </form>
