@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Fixed import
-import './index.css';
+import ReactDOM from 'react-dom/client';
+
+// COMPONONETS
 import Header from './header';
 import Footer from './footer';
 import Home from './home';
@@ -12,6 +13,9 @@ import Post from './postPage';
 import NewPost from './newpost';
 import api from './api/posts';
 
+//css files
+import './index.css';
+
 
 
 const Index = () => {
@@ -20,12 +24,20 @@ const Index = () => {
   const [searchResult, setSearchResult] = useState(post); // Initialize with all posts
 
   // Delete Post Function
-  const handleDelete = (id) => {
-    const postlist = post.filter((item) => item.id !== Number(id));
-    setPost(postlist);
-    setTimeout(() => {
-      alert("Blog Post Deleted");
-    }, 500);
+  const handleDelete = async (id) => {
+    const iD = id.toString();
+    try {
+      const postlist = post.filter((item) => item.id !== Number(id));
+      const response = await api.delete(`/posts/${iD}`);
+      console.log(response)
+      setPost(postlist);
+      setTimeout(() => {
+        alert("Blog Post Deleted");
+      }, 500);
+    }
+    catch (err) {
+      console.log(err)
+    }
   };
 
   // Search Function
@@ -34,18 +46,31 @@ const Index = () => {
   };
 
   // Add New Post Function
-  const handleSubmit = (title, body) => {
+  const handleSubmit = async (title, body) => {
     const id = post.length > 0 ? Math.max(...post.map((post) => post.id)) + 1 : 0;
     const newBlog = {
-      id,
+      id: id.toString(),
       title,
       datetime: new Date().toISOString(),
       body,
     };
-    setPost([...post, newBlog]);
-    setTimeout(() => {
-      alert("Blog Post Added");
-    }, 500);
+
+    try {
+
+      const response = await api.post("/posts", newBlog);
+      setPost([...post, response.data]);
+      console.log(response)
+      setTimeout(() => {
+        alert("Blog Post Added");
+      }, 500);
+    }
+    catch (err) {
+      console.log("Unexpected Error")
+    }
+    finally {
+
+    }
+
   };
 
   // Search Filter Logic inside useEffect
