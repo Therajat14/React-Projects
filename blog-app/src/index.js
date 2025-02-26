@@ -62,19 +62,21 @@ const Index = () => {
   // ✅ Moved JSX inside return statement
   return (
     <BrowserRouter>
-      <Header search={search} handleSearch={handleSearch} />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home post={searchResult} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/newpost" element={<NewPost handleSubmit={handleSubmit} />} />
-          <Route path="/Service" element={<Home />} />
-          <Route path="/Blog" element={<Blog post={searchResult} />} /> {/* Fixed */}
-          <Route path="/post/:id" element={<Post post={post} handleDelete={handleDelete} />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-      <Footer />
+      <div className="App">
+        <Header search={search} handleSearch={handleSearch} />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home post={searchResult} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/newpost" element={<NewPost handleSubmit={handleSubmit} />} />
+            <Route path="/Service" element={<Home />} />
+            <Route path="/Blog" element={<Blog post={searchResult} />} /> {/* Fixed */}
+            <Route path="/post/:id" element={<Post post={post} handleDelete={handleDelete} />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 };
