@@ -9,13 +9,12 @@ import About from './about';
 import Blog from './blog';
 import NotFound from './notfound';
 import Post from './postPage';
-import { postsDB } from './postData';
 import NewPost from './newpost';
 
 const Index = () => {
-  const [post, setPost] = useState(postsDB);
+  const [post, setPost] = useState([]);
   const [search, setSearch] = useState("");
-  const [searchResult, setSearchResult] = useState(postsDB); // Initialize with all posts
+  const [searchResult, setSearchResult] = useState(post); // Initialize with all posts
 
   // Delete Post Function
   const handleDelete = (id) => {
