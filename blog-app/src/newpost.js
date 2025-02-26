@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 
 
-const NewPost = ({ handelSubmit }) => {
+const NewPost = ({ handleSubmit }) => {
 
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
@@ -11,19 +11,20 @@ const NewPost = ({ handelSubmit }) => {
     return (
         <>
             <h2>Create a new Post</h2>
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                if (!title || !body) {
-                    alert("Both fields are required!");
-                    return;
-                }
+            <form onSubmit={
+                (e) => {
+                    e.preventDefault();
+                    if (!title || !body) {
+                        alert("Both fields are required!");
+                        return;
+                    }
 
-                handelSubmit(title, body);
-                navigate('/')
+                    handleSubmit(title, body);
+                    navigate('/')
 
 
 
-            }}>
+                }}>
                 <label htmlFor="title"></label>
                 <input
                     type="text"
