@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-const Post = ({ post, handelDelete }) => {
+const Post = ({ post, handleDelete }) => {
     const { id } = useParams();
     const item = post.find(item => item.id.toString() === id);
 
@@ -18,7 +18,7 @@ const Post = ({ post, handelDelete }) => {
             <Link to="/">
                 <button onClick={() => {
 
-                    handelDelete(id)
+                    handleDelete(id);
 
                 }}> Delete Post</button>
             </Link>
