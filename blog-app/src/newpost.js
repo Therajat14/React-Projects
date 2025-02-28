@@ -1,11 +1,10 @@
-import { useState } from "react";
+
 import { useNavigate } from "react-router";
 
 
-const NewPost = ({ handleSubmit }) => {
+const NewPost = ({ handleSubmit, title, setTitle, body, setBody, handleEdit }) => {
 
-    const [title, setTitle] = useState("");
-    const [body, setBody] = useState("");
+
     const navigate = useNavigate();
 
     return (

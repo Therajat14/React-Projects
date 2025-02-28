@@ -12,9 +12,10 @@ import NotFound from './notfound';
 import Post from './postPage';
 import NewPost from './newpost';
 import api from './api/posts';
+import EditPost from './editPost';
 
 //css files
-import './index.css';
+import './index.css';;
 
 
 
@@ -57,37 +58,43 @@ const Index = () => {
     }
 
   };
-  const HandleEdit = async (id) => {
+  const handleEdit = async (id) => {
     const newBlog = {
-      id: id.toString(),
+      id,
       title: editTitle,
       datetime: new Date().toISOString(),
       body: editBody,
     };
+    console.log(newBlog);
 
     try {
-      console.log("Hi we are editing our post");
+      const response = await api.put(`/posts/${id}`, newBlog);
+      setPost(post.map(post => Number(post.id) === Number(id) ? response.data : post));
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
 
+    console.log("Edit hit");
+
   }
 
   const handleDelete = async (id) => {
-    const iD = id.toString();
-    try {
-      const postlist = post.filter((item) => item.id !== id);
+    // const iD = id.toString();
+    // try {
+    //   const postlist = post.filter((item) => item.id !== id);
 
-      console.log(postlist)
-      const response = await api.delete(`/posts/${iD}`);
-      console.log(response);
+    //   console.log(postlist)
+    //   const response = await api.delete(`/posts/${iD}`);
+    //   console.log(response);
 
-      setPost(postlist);
+    //   setPost(postlist);
 
-    }
-    catch (err) {
-      console.log(err)
-    }
+    // }
+    // catch (err) {
+    //   console.log(err)
+    // }
+
+    console.log("Eiiteag");
   };
 
   // Search Function
@@ -152,8 +159,22 @@ const Index = () => {
             <Route path="/newpost" element={<NewPost handleSubmit={handleSubmit} title={title} body={body} setTitle={setTitle} setBody={setBody} />} />
             <Route path="/Service" element={<Home />} />
             <Route path="/Blog" element={<Blog post={searchResult} />} /> {/* Fixed */}
-            <Route path="/post/:id" element={<Post post={post} handleDelete={handleDelete} HandleEdit={HandleEdit} />} />
+            <Route path="/post/:id" element={<Post post={post} handleDelete={handleDelete} />} />
             <Route path="*" element={<NotFound />} />
+
+            <Route path="/editpost/:id/:Etitle/:Ebody"
+              element={
+                <EditPost
+                  title={title}
+                  body={body}
+                  editTitle={editTitle}
+                  editBody={editBody}
+                  setEditTitle={setEditTitle}
+                  setEditBody={setEditBody}
+                  handleEdit={handleEdit}
+                />
+              } />
+
           </Routes>
         </main>
         <Footer />

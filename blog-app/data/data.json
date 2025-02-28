@@ -1,12 +1,6 @@
 {
   "posts": [
     {
-      "id": "1",
-      "title": "Getting Started with React",
-      "datetime": "2025-02-23T10:00:00Z",
-      "body": "React is a popular JavaScript library for building user interfaces, especially single-page applications. To get started, you'll need Node.js installed. First, create a new project using Create React App by running `npx create-react-app my-app`. Once set up, navigate into your project folder and run `npm start` to launch the development server. React components are the building blocks of your UI, allowing you to split your app into reusable pieces.\n\nReact follows a declarative approach, meaning you describe how your UI should look, and React takes care of updating the DOM efficiently. It uses a virtual DOM to enhance performance, making UI updates smoother. Components in React can be either functional or class-based, with functional components being the preferred choice in modern development.\n\nState management in React is handled using hooks like `useState` and `useEffect`. These hooks allow developers to store and manage component-specific data, trigger re-renders when data changes, and handle side effects such as API calls or event listeners."
-    },
-    {
       "id": "3",
       "title": "React vs Vue: Which One to Choose?",
       "datetime": "2025-02-20T12:45:00Z",
@@ -29,6 +23,18 @@
       "title": "State Management in React: When to Use Context API",
       "datetime": "2025-02-14T14:30:00Z",
       "body": "State management is a crucial aspect of any React application. While `useState` works well for local component state, managing global state can be challenging in large applications. The Context API provides a built-in way to share state across multiple components without passing props manually at every level.\n\nUsing the Context API, you can create a global state object and wrap your application with a provider. Components can then consume this context using the `useContext` hook. This makes data flow more manageable and reduces prop drilling.\n\nFor more complex applications, tools like Redux or Zustand can be used alongside the Context API. These tools provide better state management solutions, especially when dealing with large datasets or asynchronous data fetching."
+    },
+    {
+      "id": "7",
+      "title": "Custom Hooks in React 🚀",
+      "datetime": "2025-02-28T07:11:18.394Z",
+      "body": "A Custom Hook is a JavaScript function that starts with use and allows you to reuse stateful logic across multiple components.\n\n🔹 Why Use Custom Hooks?\n✅ Reusability – Avoid repeating logic in multiple components.\n✅ Separation of Concerns – Keep components cleaner by moving logic into hooks.\n✅ Better Readability – Improve code structure and maintainability.\n\n🔹 How to Create a Custom Hook?\nA Custom Hook is just a function that:\n\nStarts with use\nUses built-in Hooks like useState, useEffect, etc.\nReturns state and functions for reuse.\n💡 Example 1: Custom Hook for Fetching Data\njsx\nCopy code\nimport { useState, useEffect } from \"react\";\nimport axios from \"axios\";\n\n// Custom Hook: useFetch\nconst useFetch = (url) => {\n  const [data, setData] = useState([]);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      try {\n        const response = await axios.get(url);\n        setData(response.data);\n      } catch (err) {\n        setError(err);\n      } finally {\n        setLoading(false);\n      }\n    };\n    fetchData();\n  }, [url]);\n\n  return { data, loading, error }; // Return values\n};\n\nexport default useFetch;\n🛠 Using useFetch in a Component\njsx\nCopy code\nimport useFetch from \"./useFetch\";\n\nconst Posts = () => {\n  const { data: posts, loading, error } = useFetch(\"https://jsonplaceholder.typicode.com/posts\");\n\n  if (loading) return <p>Loading...</p>;\n  if (error) return <p>Error: {error.message}</p>;\n\n  return (\n    <div>\n      <h2>Blog Posts</h2>\n      {posts.map((post) => (\n        <p key={post.id}>{post.title}</p>\n      ))}\n    </div>\n  );\n};\n\nexport default Posts;\n💡 Example 2: Custom Hook for Local Storage\nSave and retrieve values from localStorage easily.\n\njsx\nCopy code\nimport { useState, useEffect } from \"react\";\n\nconst useLocalStorage = (key, initialValue) => {\n  const [value, setValue] = useState(() => {\n    return JSON.parse(localStorage.getItem(key)) || initialValue;\n  });\n\n  useEffect(() => {\n    localStorage.setItem(key, JSON.stringify(value));\n  }, [key, value]);\n\n  return [value, setValue];\n};\n\nexport default useLocalStorage;\n🛠 Using useLocalStorage in a Component\njsx\nCopy code\nimport useLocalStorage from \"./useLocalStorage\";\n\nconst Counter = () => {\n  const [count, setCount] = useLocalStorage(\"count\", 0);\n\n  return (\n    <div>\n      <p>Count: {count}</p>\n      <button onClick={() => setCount(count + 1)}>Increment</button>\n    </div>\n  );\n};\n\nexport default Counter;\n🔹 When to Use Custom Hooks?\nUse them when you need to reuse logic across multiple components, such as:\n\nFetching data (useFetch)\nManaging local storage (useLocalStorage)\nHandling authentication\nTracking screen size\nDebouncing user input (e.g., search boxes)\n🔹 Key Points\n✅ Custom Hooks must start with use (e.g., useFetch, useAuth).\n✅ They use built-in hooks (useState, useEffect, etc.).\n✅ They return values or functions to be used in components.\n✅ They help keep components clean by moving logic into separate files.\n\nWould you like a custom hook for a specific use case? 😊🚀"
+    },
+    {
+      "id": "8",
+      "title": "Gabru CCC f",
+      "datetime": "2025-02-28T17:52:46.922Z",
+      "body": "Kulveer Gabru\nupdateed"
     }
   ]
 }
