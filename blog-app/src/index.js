@@ -54,7 +54,8 @@ const Index = () => {
       console.log("Unexpected Error")
     }
     finally {
-
+      setTitle('');
+      setBody('')
     }
 
   };
@@ -73,8 +74,10 @@ const Index = () => {
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
-
-    console.log("Edit hit");
+    finally {
+      setEditTitle("");
+      setEditBody("");
+    }
 
   }
 
