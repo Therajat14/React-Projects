@@ -24,7 +24,8 @@ function Home({ post }) {
                     ))}
                 </ul>
             ) : (
-                <p className="no-posts">No posts available.</p>
+                <p className="no-posts">No posts available. Json-server not working.
+                </p>
             )}
         </div>
     );
