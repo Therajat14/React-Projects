@@ -8,6 +8,7 @@ function Home({ post }) {
 
             {post.length > 0 ? (
                 <ul className="post-list">
+
                     {post.map((post) => (
                         <Link to={`post/${post.id}`} className="homeFeed">
                             <li key={post.id} className="post-item">

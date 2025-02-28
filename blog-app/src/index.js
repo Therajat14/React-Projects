@@ -13,6 +13,7 @@ import Post from './postPage';
 import NewPost from './newpost';
 import api from './api/posts';
 import EditPost from './editPost';
+import useWindowSize from './hooks/useWindowSIze';
 
 //css files
 import './index.css';;
@@ -27,6 +28,7 @@ const Index = () => {
   const [editBody, setEditBody] = useState("");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const { width } = useWindowSize();
 
   // Delete Post Function
 
@@ -55,7 +57,7 @@ const Index = () => {
     }
     finally {
       setTitle('');
-      setBody('')
+      setBody('');
     }
 
   };
@@ -154,7 +156,7 @@ const Index = () => {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header search={search} handleSearch={handleSearch} />
+        <Header search={search} handleSearch={handleSearch} width={width} />
         <main>
           <Routes>
             <Route path="/" element={<Home post={searchResult} />} />
