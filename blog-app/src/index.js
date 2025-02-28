@@ -22,28 +22,13 @@ const Index = () => {
   const [post, setPost] = useState([]);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState(post); // Initialize with all posts
+  const [editTitle, setEditTitle] = useState("");
+  const [editBody, setEditBody] = useState("");
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
 
   // Delete Post Function
-  const handleDelete = async (id) => {
-    const iD = id.toString();
-    try {
-      const postlist = post.filter((item) => item.id !== Number(id));
-      const response = await api.delete(`/posts/${iD}`);
-      console.log(response)
-      setPost(postlist);
-      setTimeout(() => {
-        alert("Blog Post Deleted");
-      }, 500);
-    }
-    catch (err) {
-      console.log(err)
-    }
-  };
 
-  // Search Function
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
 
   // Add New Post Function
   const handleSubmit = async (title, body) => {
@@ -72,7 +57,43 @@ const Index = () => {
     }
 
   };
+  const HandleEdit = async (id) => {
+    const newBlog = {
+      id: id.toString(),
+      title: editTitle,
+      datetime: new Date().toISOString(),
+      body: editBody,
+    };
 
+    try {
+      console.log("Hi we are editing our post");
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+
+  }
+
+  const handleDelete = async (id) => {
+    const iD = id.toString();
+    try {
+      const postlist = post.filter((item) => item.id !== id);
+
+      console.log(postlist)
+      const response = await api.delete(`/posts/${iD}`);
+      console.log(response);
+
+      setPost(postlist);
+
+    }
+    catch (err) {
+      console.log(err)
+    }
+  };
+
+  // Search Function
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
   // Search Filter Logic inside useEffect
   useEffect(() => {
     if (search.trim() === "") {
@@ -128,10 +149,10 @@ const Index = () => {
           <Routes>
             <Route path="/" element={<Home post={searchResult} />} />
             <Route path="/about" element={<About />} />
-            <Route path="/newpost" element={<NewPost handleSubmit={handleSubmit} />} />
+            <Route path="/newpost" element={<NewPost handleSubmit={handleSubmit} title={title} body={body} setTitle={setTitle} setBody={setBody} />} />
             <Route path="/Service" element={<Home />} />
             <Route path="/Blog" element={<Blog post={searchResult} />} /> {/* Fixed */}
-            <Route path="/post/:id" element={<Post post={post} handleDelete={handleDelete} />} />
+            <Route path="/post/:id" element={<Post post={post} handleDelete={handleDelete} HandleEdit={HandleEdit} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
