@@ -13,7 +13,10 @@ import Post from './postPage';
 import NewPost from './newpost';
 import api from './api/posts';
 import EditPost from './editPost';
+
+// CUSTOM HOOKS ;
 import useWindowSize from './hooks/useWindowSIze';
+
 
 //css files
 import './index.css';;
@@ -29,6 +32,7 @@ const Index = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const { width } = useWindowSize();
+
 
   // Delete Post Function
 
