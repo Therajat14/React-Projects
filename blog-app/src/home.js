@@ -10,8 +10,8 @@ function Home({ post }) {
                 <ul className="post-list">
 
                     {post.map((post) => (
-                        <Link to={`post/${post.id}`} className="homeFeed">
-                            <li key={post.id} className="post-item">
+                        <Link to={`post/${post.id}`} className="homeFeed" key={post.id}>
+                            <li key={(post.id)} className="post-item">
                                 <div className="post-content">
                                     <h3 className="post-title">{post.title}</h3>
                                     <p className="post-datetime">{new Date(post.datetime).toLocaleString()}</p>

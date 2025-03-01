@@ -62,6 +62,7 @@ const Index = () => {
 
   };
   const handleEdit = async (id) => {
+
     const newBlog = {
       id,
       title: editTitle,
@@ -124,7 +125,6 @@ const Index = () => {
       try {
         const response = await api.get("/posts");
         setPost(response.data)
-        console.log(response)
       } catch (error) {
         if (error.response) {
           // The request was made and the server responded with a status code

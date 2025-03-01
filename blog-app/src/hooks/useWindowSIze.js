@@ -1,3 +1,4 @@
+import { cleanup } from "@testing-library/react";
 import { useState, useEffect } from "react";
 
 const useWindowSize = () => {
@@ -17,13 +18,11 @@ const useWindowSize = () => {
         handelResize();
         window.addEventListener('resize', handelResize);
 
-        const cleanUp = () => {
-            console.log("This is called inside cleanUP function");
-            window.removeEventListener('resize', handelResize);
-        }
 
-        return cleanUp;
+        return window.removeEventListener('resize', handelResize);
     },
+
+
         []);
 
     return WindowSize;

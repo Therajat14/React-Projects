@@ -13,8 +13,10 @@ function Header({ search, handleSearch, width }) {
                             : <FaLaptop />}
                 </h1>
             </div>
-            <Navbar />
-            <Search search={search} handleSearch={handleSearch} />
+            <div>
+
+                <Search search={search} handleSearch={handleSearch} /> <Navbar />
+            </div>
 
         </header>
     )
