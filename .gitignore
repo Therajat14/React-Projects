@@ -1,5 +1,9 @@
 # Ignore node_modules and environment files
 node_modules/
+/blog-app/node_modules/
+/backgroundChangeProject/node_modules/
+
+
 .env
 .env.local
 .env.production
