@@ -36,3 +36,12 @@ button {
   align-items: center;
 
 }
+
+ul {
+  list-style: none;
+}
+
+.todoHead {
+  display: flex;
+  justify-content: space-between;
+}
