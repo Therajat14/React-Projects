@@ -2,12 +2,16 @@ import express from 'express';
 import { createTodo, updateTodo } from './types.js'
 import dotEnv from 'dotenv';
 import todo from './db.js';
+import cors from 'cors'
+
+
+
 dotEnv.config();
 const app = express();
 const port = process.env.PORT
 
 app.use(express.json());
-
+app.use(cors());
 app.get("/", (req, res) => {
     res.json({ msg: "Hi there" }); // Corrected response method
 });
