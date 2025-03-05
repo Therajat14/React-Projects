@@ -1,9 +1,11 @@
-import { createContext, useState } from "react";
+
+import { createContext, useEffect, useState } from "react";
 
 export const TodoContext = createContext();
 
 const TodoProvider = ({ children }) => {
-    const [todo, setTodo] = useState([
+
+    const [todos, setTodo] = useState([
         {
             "title": "Go to the gym",
             "description": "Complete a 1-hour workout session including cardio and weights.",
@@ -21,8 +23,9 @@ const TodoProvider = ({ children }) => {
         }
     ]
     );
+
     return (
-        <TodoContext.Provider value={{ todo, setTodo }} >
+        <TodoContext.Provider value={{ todos, setTodo }} >
             {children}
         </TodoContext.Provider>
     )
