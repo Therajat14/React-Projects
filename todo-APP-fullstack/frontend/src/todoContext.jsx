@@ -1,34 +1,40 @@
-
 import { createContext, useEffect, useState } from "react";
 
 export const TodoContext = createContext();
 
 const TodoProvider = ({ children }) => {
+    const [todosItem, setTodos] = useState([]); // ✅ Fixed state setter name
 
-    const [todos, setTodo] = useState([
-        {
-            "title": "Go to the gym",
-            "description": "Complete a 1-hour workout session including cardio and weights.",
-            "isCompleted": false
-        },
-        {
-            "title": "Finish React project",
-            "description": "Complete the Todo app and push the code to GitHub.",
-            "isCompleted": true
-        },
-        {
-            "title": "Read a book",
-            "description": "Read 20 pages of 'Atomic Habits' by James Clear.",
-            "isCompleted": false
-        }
-    ]
-    );
+    // Fetch todos from API
+
+
+    useEffect(() => {
+        const fetchTodos = async () => {
+            try {
+                console.log("Fetching todos...");
+                const response = await fetch("http://localhost:9000/todos");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log(data)
+                setTodos(data); // ✅ Update state with fetched todos
+            } catch (error) {
+                console.error("Error fetching todos:", error);
+            }
+        };
+        fetchTodos();
+
+        return () => {
+            console.log("Cleanup: Component unmounted");
+        };
+    }, []);
 
     return (
-        <TodoContext.Provider value={{ todos, setTodo }} >
+        <TodoContext.Provider value={{ todosItem, setTodos }}>
             {children}
         </TodoContext.Provider>
-    )
-}
+    );
+};
 
 export default TodoProvider;
