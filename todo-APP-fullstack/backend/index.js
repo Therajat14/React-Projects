@@ -46,27 +46,33 @@ app.get("/todos", async (req, res) => {
 });
 
 // ✅ Fixed: Mark a todo as completed
-app.post("/completed", async (req, res) => {
+app.put("/completed", async (req, res) => {
+    console.log("✅ Server HIT with payload:", req.body);
+
     try {
         const parsedPayload = updateTodo.safeParse(req.body);
         if (!parsedPayload.success) {
             return res.status(400).json({ error: parsedPayload.error.format() });
         }
 
-        const updatedTodo = await todo.findByIdAndUpdate(
-            parsedPayload.data.id,
-            { isCompleted: true },
-            { new: true }
-        );
-
-        if (!updatedTodo) {
+        const todoItem = await todo.findById(parsedPayload.data._id);
+        if (!todoItem) {
             return res.status(404).json({ msg: "Todo not found" });
         }
 
-        res.status(200).json({ message: "Todo marked as completed", todo: updatedTodo });
+        // ✅ Toggle isCompleted between true and false
+        const updatedTodo = await todo.findByIdAndUpdate(
+            parsedPayload.data._id,
+            { isCompleted: !todoItem.isCompleted },
+            { new: true }
+        );
+
+        res.status(200).json({ message: "Todo updated", todo: updatedTodo });
+
     } catch (err) {
         res.status(500).json({ msg: err.message });
     }
 });
+
 
 app.listen(port, () => console.log(`🚀 Server Running at http://localhost:${port}`));
