@@ -17,7 +17,6 @@ const TodoProvider = ({ children }) => {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 const data = await response.json();
-                console.log(data)
                 setTodos(data); // ✅ Update state with fetched todos
             } catch (error) {
                 console.error("Error fetching todos:", error);
