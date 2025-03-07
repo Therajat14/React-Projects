@@ -1,26 +1,27 @@
 import { useContext } from "react";
-import TodoProvider, { TodoContext } from "../todoContext";
+import { TodoContext } from "../todoContext";
 
 const Todos = () => {
-    const { todos } = useContext(TodoContext);
+    const { todosItem } = useContext(TodoContext);
+
     return (
         <div>
             <ul>
-                {
-                    todos.map(todo => <li>
-                        <div className="todoHead">
-                            <h2>{todo.title}</h2>
-                            <input type="checkbox" checked={todo.isCompleted} />
-
+                {todosItem.map((todo, index) => (
+                    <li key={todo._id || index}>
+                        <div className="todoHead" >
+                            <label htmlFor="check">
+                                <h2>{todo.title}</h2>
+                            </label>
+                            <input type="checkbox" id="check" checked={todo.isCompleted} readOnly />
                         </div>
 
                         <p>{todo.description}</p>
-
-                    </li>)
-                }
+                    </li>
+                ))}
             </ul>
         </div>
-    )
-}
+    );
+};
 
 export default Todos;
