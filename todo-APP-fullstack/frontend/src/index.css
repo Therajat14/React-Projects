@@ -6,14 +6,14 @@
   font-family: Arial, sans-serif;
 }
 
-/* Centering the App */
+/* Dark Theme */
 body {
-  background-color: #f4f4f4;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  /* Use min-height instead of height for better mobile support */
   flex-direction: column;
   padding: 10px;
 }
@@ -22,10 +22,11 @@ body {
 #root {
   width: 95%;
   max-width: 500px;
-  background: white;
+  background: #2a2a2a;
   padding: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  border: 1px solid #333;
 }
 
 /* Form Styling */
@@ -45,40 +46,41 @@ label {
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 5px;
+  color: #bbb;
 }
 
 input,
 textarea {
   padding: 12px;
-  /* Increased padding for better mobile touch */
-  border: 1px solid #ccc;
+  border: 1px solid #444;
+  background: #333;
   border-radius: 5px;
   width: 100%;
   font-size: 16px;
+  color: #e0e0e0;
 }
 
 textarea {
   resize: none;
   height: 100px;
-  /* Increased height for mobile */
 }
 
 /* Button Styling */
 button {
-  background-color: #007bff;
+  background-color: #10a37f;
   color: white;
   border: none;
   padding: 12px;
-  /* Bigger buttons for better touch */
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
-  transition: 0.3s;
+  transition: background 0.3s, transform 0.2s;
   width: 100%;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #0e8c6a;
+  transform: scale(1.02);
 }
 
 /* Todo List Styling */
@@ -88,14 +90,15 @@ ul {
 }
 
 li {
-  background: white;
+  background: #252525;
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 12px;
   margin-bottom: 15px;
   border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  border: 1px solid #333;
 }
 
 /* Todo Header */
@@ -109,18 +112,18 @@ li {
   font-size: 18px;
   min-width: 75%;
   word-wrap: break-word;
-  /* Prevent text overflow */
+  color: #fff;
 }
 
 #check {
   max-width: 10%;
 }
 
-/* Checkbox for Mobile */
+/* Checkbox Styling */
 input[type="checkbox"] {
   transform: scale(1.5);
-  /* Larger checkbox for mobile touch */
   cursor: pointer;
+  accent-color: #10a37f;
 }
 
 /* Responsive Design */
