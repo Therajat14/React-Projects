@@ -10,7 +10,7 @@ const createTodo = z.object({
 });
 
 const updateTodo = z.object({
-    id: z.string()
+    _id: z.string()
         .length(24, { message: "Invalid ID: Must be a 24-character MongoDB ObjectId" })
         .regex(/^[0-9a-fA-F]{24}$/, { message: "Invalid ID format: Must be a valid MongoDB ObjectId" })
 });
