@@ -3,7 +3,7 @@ import { CreateTodo } from "./components/createTodo";
 import TodoProvider from "./todoContext";
 import Todos from "./components/todos";
 import Header from "./components/header";
-import Home from "./components/home";
+
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
         />
 
         {/* ✅ Route for Home Page */}
-        <Route path="/home" element={<Home />} />
+
       </Routes>
     </BrowserRouter>
   );
