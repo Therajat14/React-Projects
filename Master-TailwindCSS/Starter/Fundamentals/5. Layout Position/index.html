@@ -1,14 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>TailwindCSS</title>
-  </head>
-  <body class="p-20">
-    <!-- https://tailwindcss.com/docs/position -->
-    <!-- https://tailwindcss.com/docs/display -->
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>TailwindCSS</title>
+</head>
+
+<body class="p-20">
+
+  <!-- https://tailwindcss.com/docs/position -->
+  <div class="bg-red-100 p-7">
+    <h1 class="mb-3">position</h1>
+    <div class="relative h-40 bg-green-200 w-1/2">
+      <p>
+        relative
+      </p>
+      <div class="absolute bottom-0 right-0 bg-teal-200 p-4">
+        <p>Absolute</p>
+      </div>
+    </div>
+    <div class="relative h-40 bg-green-200 w-1/2 mt-10">
+      <p>
+        relative
+      </p>
+      <div class="absolute top-0 left-0 bg-teal-200 p-4">
+        <p>Absolute</p>
+      </div>
+    </div>
+    <div class="relative h-40 bg-green-200 w-1/2 mt-10">
+      <p>
+        relative
+      </p>
+      <div class="absolute top-0 right-0 bg-teal-200 p-4">
+        <p>Absolute</p>
+      </div>
+    </div>
+    <div class="relative h-40 bg-green-200 w-1/2 mt-10">
+      <p>
+        relative
+      </p>
+      <div class="absolute bottom-0 left-0 bg-teal-200 p-4">
+        <p>Absolute</p>
+      </div>
+    </div>
+  </div>
+  <!-- https://tailwindcss.com/docs/display -->
+
+
+  <!-- DISPLAY -->
+  <h1 class="my-20">Display</h1>
+  <div class="bg-indigo-200 p-10 mb-10 ">
+    <span class="inline bg-orange-300">1. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, ullam?</span>
+
+    <span class="inline-block font-semibold bg-yellow-200 ">I am inline block element</span>
+    <span class="block bg-red-200">i am a block element i can block every line and get my own line i am mf king</span>
+    <span class="hidden">I am a hidden text</span>
+    <span class="sr-only">I can't be hide by screen reader</span>
+    <span class="sr-only sm:not-sr-only">I can not be seen on small screens</span>
+  </div>
+</body>
+
 </html>
