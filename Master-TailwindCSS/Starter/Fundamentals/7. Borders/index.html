@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Borders</title>
-  </head>
-  <body>
-    <!-- Border Width & Colors -->
-    <!-- https://tailwindcss.com/docs/border-width -->
 
-    <!-- Border Radius -->
-    <!-- https://tailwindcss.com/docs/border-radius -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Borders</title>
+</head>
 
-    <!-- Specific Sides -->
-  </body>
+<body>
+  <!-- Border Width & Colors -->
+  <div class="h-20 w-20 border-2 border-indigo-500 m-5"></div>
+  <!-- https://tailwindcss.com/docs/border-width -->
+  <div class="border-t-4 border-indigo-500 m-5 p-5 w-20 h-20"></div>
+  <div class="border-r-4 border-indigo-500 m-5 p-5 w-20 h-20"></div>
+  <div class="border-b-4 border-indigo-500 m-5 p-5 w-20 h-20"></div>
+  <div class="border-l-4 border-indigo-500 m-5 p-5 w-20 h-20"></div>
+
+  <div class="grid grid-rows-3 divide-x-4 divide-indigo-500 border-2 border-indigo-500 w-40 text-center">
+    <div>01</div>
+    <div>02</div>
+    <div>03</div>
+  </div>
+
+  <div
+    class="grid grid-rows-3 divide-x-3 divide-dashed divide-indigo-500 border-2 border-indigo-500 w-40 text-center mt-4">
+    <div>01</div>
+    <div>02</div>
+    <div>03</div>
+  </div>
+
+
+  <!-- Border Radius -->
+
+  <!-- https://tailwindcss.com/docs/border-radius -->
+
+  <!-- Specific Sides -->
+</body>
+
 </html>
