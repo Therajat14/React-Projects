@@ -1,21 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Backgrounds & Shadows</title>
-  </head>
-  <body>
-    <!-- Background Images -->
-    <!-- https://tailwindcss.com/docs/background-image -->
 
-    <!-- Shadows -->
-    <!-- https://tailwindcss.com/docs/drop-shadow -->
-    <!-- I know we didn't cover flexbox, but it's just for demo purposes -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Backgrounds & Shadows</title>
+</head>
 
-    <!-- Gradients -->
-    <!-- https://tailwindcss.com/docs/gradient-color-stops -->
-  </body>
+<body>
+
+  <!-- Background Images -->
+  <!-- https://tailwindcss.com/docs/background-image -->
+
+  <!-- Shadows -->
+  <h1> Shadows</h1>
+  <div class="flex flex-wrap">
+
+
+    <div class="w-[400px] mt-10 ml-4 p-3 shadow-2xs">
+      <h1>2 Extra Small</h1>
+    </div>
+    <div class="w-[400px] mt-10 ml-4 p-3 shadow-xs">
+      <h1>Extra Small</h1>
+    </div>
+    <div class="w-[400px] mt-10 ml-4 p-3 shadow-sm">
+      <h1> Small </h1>
+    </div>
+    <div class="w-[400px] mt-10 ml-4 p-3 shadow-md">
+      <h1> Medium</h1>
+    </div>
+    <div class="w-[400px] mt-10 ml-4 p-3 shadow-lg">
+      <h1>Large</h1>
+    </div>
+    <div class="w-[400px] mt-10 ml-4 p-3 shadow-xl">
+      <h1> Extra Large</h1>
+    </div>
+    <div class="w-[400px] mt-10 ml-4 p-3 shadow-None">
+      <h1> Shadow None</h1>
+    </div>
+    <div class="w-[400px] mt-10 ml-4 p-3 bg-indigo-500 shadow-lg shadow-indigo-500/50">
+      <h1> Shadow Red</h1>
+    </div>
+    <div class="w-[400px] mt-10 ml-4 p-3 shadow-md">
+      <h1> Shadow Medium</h1>
+    </div>
+    <div class="w-[400px] mt-10 ml-4 p-3 shadow-inset">
+      <h1> Inner Shadow</h1>
+    </div>
+
+  </div>
+  <!-- https://tailwindcss.com/docs/drop-shadow -->
+  <!-- I know we didn't cover flexbox, but it's just for demo purposes -->
+
+  <!-- Gradients -->
+  <div class="rounded ring-2 ring-blue-300 h-60 w-100 bg-gradient-to-r from-pink-200 via-purple-300 to-blue-200 m-10 text-gray-800 font-bold
+    p-10 center">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga quibusdam repellat ut ea ex amet!
+  </div>
+
+  <!-- https://tailwindcss.com/docs/gradient-color-stops -->
+</body>
+
 </html>
